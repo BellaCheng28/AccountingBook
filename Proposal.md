@@ -39,13 +39,13 @@ User routes
 accouting book routes
 | Action | Route                                | HTTP  Verb |
 | ------ | ------------------------------------ | ---------- |
-| Index  | /accoutingBook                       | GET        |
-| New    | /accoutingBook/new                   | GET        |
-| Create | /accoutingBook                       | POST       |
-| Show   | /accoutingBook/:accoutingBookId      | GET        |
-| Edit   | /accoutingBook/:accoutingBookId/edit | GET        |
-| Update | /accoutingBook/:accoutingBookId      | PUT        |
-| Delete | /accoutingBook/:accoutingBookId      | DELETE     |
+| Index  | /accoutingbook                       | GET        |
+| New    | /accoutingbook/new                   | GET        |
+| Create | /accoutingbook                       | POST       |
+| Show   | /accoutingbook/:accoutingbookId      | GET        |
+| Edit   | /accoutingbook/:accoutingbookId/edit | GET        |
+| Update | /accoutingbook/:accoutingbookId      | PUT        |
+| Delete | /accoutingbook/:accoutingbookId      | DELETE     |
 >Note:you may not need all of these routes and views in your application
 
 Entry routes
