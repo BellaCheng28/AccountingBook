@@ -1,0 +1,12 @@
+<nav>
+  <a href="/">Home</a>
+  <% if(typeof user !== "undefined"&& user) { %>
+    <a href="/users/<%=user._id%>/account">View my accountingbook</a>
+     <a href="/users">view my family members</a>
+    <a href="/auth/sign-out">Sign Out</a>
+  <% } else { %>
+     
+    <a href="/auth/sign-in">Sign In</a>
+    <a href="/auth/sign-up">Sign Up</a>
+  <% } %>
+</nav>

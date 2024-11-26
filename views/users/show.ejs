@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Accounting Books</title>
+</head>
+<body>
+        <h2><%=user.username%>'s Accounting Books</h2>
+        <ul>
+            <% user.accountingBooks.forEach((book)=>{%>
+            <li>
+                <a href="/accountingbooks/<%=book._id%>" <%= book.name || "Untitled Book"%>></a>
+            </li>
+           <% } )%>
+        </ul>
+        <a href="/users">Back to Family members</a>
+     
+    
+
+</body>
+</html>
