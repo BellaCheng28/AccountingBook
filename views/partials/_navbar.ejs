@@ -1,12 +1,31 @@
-<nav>
-  <a href="/">Home</a>
-  <% if(typeof user !== "undefined"&& user) { %>
-    <a href="/users/<%=user._id%>/account">View my accountingbook</a>
-     <a href="/users">view my family members</a>
-    <a href="/auth/sign-out">Sign Out</a>
-  <% } else { %>
-     
-    <a href="/auth/sign-in">Sign In</a>
-    <a href="/auth/sign-up">Sign Up</a>
-  <% } %>
-</nav>
+<!-- views/partials/_navbar.ejs -->
+
+<link rel="stylesheet" href="/stylesheets/_navbar.css" />
+
+
+    <nav>
+      <!-- <a href="/">Home</a> -->
+
+      <% if(typeof user !== "undefined"&& user) { %>
+      <div class="navbar">
+        <h1 id="nav-header">accountingBooks</h1>
+        <div class="nav-links">
+          <a class="authlink" href="/accountingBooks">Accounting Books</a>
+
+          <a class="authlink" href="/users">Shared with Family members</a>
+
+          <a class="authlink" href="/auth/sign-out">Sign Out</a>
+          <% } else { %>
+        </div>
+      </div>
+      <div class="navbar">
+        <h1 id="nav-header">Accounting Books</h1>
+        <div class="nav-links">
+          <a class="authlink" href="/auth/sign-in">Sign In</a>
+          <a class="authlink" href="/auth/sign-up">Sign Up</a>
+        </div>
+      </div>
+
+      <% } %>
+    </nav>
+ 

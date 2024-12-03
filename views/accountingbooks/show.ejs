@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Shared Book: <%= book.name %></title>
+  <style>
+    /* 页面背景和字体 */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fce4ec; /* 柔和粉色背景 */
+  color: #4b598e; /* 深蓝色文字 */
+  margin: 0;
+  padding: 0;
+}
+
+/* 主标题样式 */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ff6f61;
+  text-shadow: 2px 2px 5px rgba(255, 105, 135, 0.5);
+  margin-top: 30px;
+}
+
+/* 子标题 */
+h2 {
+  color: #ff6f61;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+/* 文字和内容的样式 */
+p, ul {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 10px 20px;
+}
+
+/* 列表项样式 */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #fff;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单样式 */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+form label {
+  font-size: 1rem;
+  color: #ff6f61;
+}
+
+form input, form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ff6f61;
+  font-size: 1rem;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #ff6f61;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background-color: #ff8b7d;
+  transform: scale(1.05);
+}
+
+/* 返回链接样式 */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #ff6f61;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  background-color: #ff6f61;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+  </style>
+</head>
+<body>
+  <h1>Shared Accounting Book: <%= book.name %></h1>
+  <p><strong>Owner:</strong> <%= book.owner.username %></p>
+
+  <% if (book.sharedWith.length > 0) { %>
+    <h2>Shared With:</h2>
+    <ul>
+      <% book.sharedWith.forEach(shared => { %>
+        <li><%= shared.userId.username %> - <%= shared.permission %> permission</li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No one has access to this book yet.</p>
+  <% } %>
+
+  <% if (book.owner._id.equals(user._id)) { %>
+    <h2>Share This Book</h2>
+    <form method="POST" action="/accountingbooks/<%= book._id %>/share">
+      <label for="familyMemberId">Family Member ID:</label>
+      <input type="text" id="familyMemberId" name="familyMemberId" required>
+
+      <label for="permission">Permission:</label>
+      <select id="permission" name="permission">
+        <option value="read">Read</option>
+        <option value="write">Write</option>
+      </select>
+      <button type="submit">Share</button>
+    </form>
+  <% } %>
+
+  <a href="/accountingbooks">Back to Accounting Books</a>
+</body>
+</html>

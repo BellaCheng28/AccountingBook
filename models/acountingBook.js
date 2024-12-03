@@ -2,42 +2,29 @@ import mongoose from "mongoose"
 import {EntrySchema} from "./entry.js";
 const{Schema} =mongoose;
 
-const CategorySchema = new Schema({
-  name:{
-    type:String,
-    required:true,
-  },
-  type:{
-    type:String,
-    enum:["income","expense"],
-    required:true,
-  },
-});
 
 const accountingBookSchema = new mongoose.Schema(
-  { 
-      owner:{
-          type: mongoose.Schema.Types.ObjectId,
-          ref:"User",
-          required:true,
+  {
+    name: { type: String, required: true },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    sharedWith: [
+      {
+        userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        permission: { type: String, enum: ["read", "write"], default: "read" }, 
       },
-      sharedWith:[
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref:"User",
-        
-        },
-      ],
-       
-  categories:[CategorySchema],
-  
-  entries: [EntrySchema],
-},
+    ],
 
-{
-  timestamps:true,
-}
 
+    entries: [EntrySchema],
+  },
+
+  {
+    timestamps: true,
+  }
 );
 
 accountingBookSchema.index({owner:1})

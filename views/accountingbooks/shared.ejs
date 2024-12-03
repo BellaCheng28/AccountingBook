@@ -1,2 +1,202 @@
-<h1>Shared Accounting Books for <%= user.username %></h1>
-<%- include('../partials/_accountingBookList.ejs', { accountingBooks: user.sharedBooks }) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f6e7e7; /* 柔和粉色背景 */
+  margin: 0;
+  padding: 0;
+  color: #4b598e; /* 深蓝色文字 */
+}
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ff6f61; /* 粉红色 */
+  text-shadow: 2px 2px 5px rgba(255, 105, 135, 0.5);
+  margin-top: 20px;
+}
+
+/* 列表样式 */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+}
+
+li {
+  background-color: #fff; /* 白色背景 */
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* 账簿名称样式 */
+li a {
+  text-decoration: none;
+  color: #ff6f61;
+  font-size: 1.5rem; /* 加大字体 */
+  font-weight: bold;
+  padding: 5px 15px;
+  border: 2px dashed #ff6f61; /* 可爱风格的边框 */
+  border-radius: 10px;
+  background-color: #ffe5e2; /* 浅粉背景 */
+  box-shadow: 0 4px 6px rgba(255, 105, 135, 0.3);
+  transition: all 0.3s ease;
+}
+
+li a:hover {
+  background-color: #ffccd1; /* 鼠标悬停变色 */
+  transform: scale(1.1); /* 放大效果 */
+}
+
+/* 按钮样式 */
+a.edit-link, a.share-link, form button {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+a.edit-link:hover, a.share-link:hover, form button:hover {
+  background-color: #ff8b7d;
+  transform: scale(1.05);
+}
+
+/* 删除按钮的特殊样式 */
+form button {
+  background-color: #eb4c42;
+}
+
+form button:hover {
+  background-color: #ff5c5c;
+}
+
+/* 返回按钮样式 */
+a.back-link {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.2rem; /* 字体稍大一些 */
+  color: #fff; /* 白色文字 */
+  background-color: #ff6f61; /* 粉红色背景 */
+  padding: 10px 20px; /* 内边距 */
+  border-radius: 20px; /* 圆角按钮 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 按钮阴影 */
+  margin: 20px auto; /* 居中显示 */
+  text-align: center; /* 文本居中 */
+  transition: all 0.3s ease; /* 动效 */
+}
+
+a.back-link:hover {
+  background-color: #ff8b7d; /* 鼠标悬停变色 */
+  transform: scale(1.05); /* 悬停时稍微放大 */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* 增强阴影 */
+}
+/* 账簿项目的样式 */
+li.book-item {
+  background-color: #fff; /* 白色背景 */
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* 两边对齐 */
+  align-items: center; /* 垂直居中 */
+  flex-wrap: wrap; /* 当内容过多时换行 */
+}
+
+/* 账簿名称（fb）的样式 */
+.book-name {
+  font-size: 1.2rem; /* 调整字体大小 */
+  font-weight: bold;
+  color: #ff6f61; /* 粉色文字 */
+  margin-right: 20px; /* 与按钮组的间距 */
+}
+
+/* 按钮组样式 */
+.action-buttons {
+  display: flex;
+  gap: 10px; /* 按钮之间的间距 */
+}
+
+/* 通用按钮样式 */
+.action-buttons a, .action-buttons button {
+  font-size: 0.9rem; /* 较小的字体 */
+  text-decoration: none;
+  color: #fff; /* 白色文字 */
+  background-color: #ff6f61; /* 粉色背景 */
+  padding: 8px 12px; /* 内边距 */
+  border-radius: 8px; /* 圆角 */
+  border: none; /* 无边框 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 按钮阴影 */
+  transition: all 0.3s ease; /* 动效 */
+  cursor: pointer;
+}
+
+.action-buttons a:hover, .action-buttons button:hover {
+  background-color: #ff8b7d; /* 悬停时变色 */
+  transform: scale(1.05); /* 悬停时放大 */
+}
+
+/* 删除按钮特殊样式 */
+.action-buttons button {
+  background-color: #eb4c42;
+}
+
+.action-buttons button:hover {
+  background-color: #ff5c5c;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <ul>
+  <% if(sharedBooks && sharedBooks.length === 0){ %>
+    <li class="book-item"> No shared books found.</li>
+  <% } else {%>
+    <% sharedBooks.forEach((book) => { %>
+      <li class="book-item">
+        <strong><a class="book-name"  href="/accountingbooks/<%=book._id %>/entries"><%=book.name%></a></strong>
+       
+        <!-- Print the sharedWith field for debugging -->
+        
+        <% if(book.sharedWith && Array.isArray(book.sharedWith)) { %> 
+          <!-- Adjusted to check _id instead of userId -->
+          <% const sharedUser = book.sharedWith.find(shared => shared.userId.equals(user._id)); %>
+          <% if (sharedUser && sharedUser.permission === "write") { %>
+            <a class="edit-link"  href="/accountingbooks/<%=book._id%>/edit">Edit</a>
+            <a class="share-link"  href="/accountingbooks/<%=book._id%>/share">FamilyShare</a>
+          <% } %>
+        <% } %>
+
+        <% if (book.owner._id.toString() === user._id.toString()) { %>
+          <form method="POST" action="/accountingbooks/<%= book._id %>?_method=DELETE">
+            <button type="submit">Delete</button>
+          </form>
+        <% } %>  
+      </li>
+    <% }) %>
+  <% } %>
+</ul>
+<a class="back-link"  href="/accountingbooks">Back to AccountingBooks</a>
+
+</body>
+</html>

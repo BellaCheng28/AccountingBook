@@ -1,28 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Document</title>
-  </head>
-  <body>
-    <h1>Accounting Books</h1>
-    <h2>My Accouonting Books </h2>
-    <ul>
-      <% ownedBooks.forEach((book)=>{%>
-   <li>
-    <a href="/accountingbooks/"<%=book._id%>> <%= book.name%> </a>
-   </li>
-      <%})%>
-      <h2>Shared Accounting Books</h2>
-      <ul>
-        <% sharedBooks.forEach((book)=>{%>
-          <li>
-            <a href="/acountingbooks/"<%=book._id%>> <%=book.name%></a>
-          </li>
-        <%})%>
-      </ul>
+    <style>
+    /* 通用字体和背景 */
+body {
+  font-family: 'Comic Sans MS', 'Arial', sans-serif; /* 可爱字体 */
+  background-color: #ffe5e2; /* 浅粉色背景 */
+  color: #444; /* 柔和的深灰色文字 */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* 标题样式 */
+h1, h2 {
+  text-align: center;
+  color: #ff6f61; /* 深粉色标题 */
+  text-shadow: 2px 2px 5px rgba(255, 182, 193, 0.5);
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* 按钮样式 */
+button, .authlink, a.edit-link, form button {
+  font-size: 1.2rem;
+  color: #ff6f61; /* 默认字体颜色为深粉色 */
+  text-decoration: none;
+  padding: 10px 20px; /* 按钮内边距 */
+  margin: 10px 5px; /* 按钮之间间距 */
+  border-radius: 10px;
+  background-color: #fff; /* 按钮背景为白色 */
+  border: 1px solid #ff6f61; /* 边框为粉色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 卡片式阴影 */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover, .authlink:hover, a.edit-link:hover, form button:hover {
+  background-color: #ff6f61; /* 悬停时背景变为粉色 */
+  color: #fff; /* 字体变为白色 */
+  transform: translateY(-5px); /* 浮起效果 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* 增加阴影 */
+}
+
+/* 链接样式（适用于返回按钮等） */
+a {
+  font-size: 1.2rem;
+  color: #ff6f61; /* 粉色字体 */
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #fff; /* 背景为白色 */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+a:hover {
+  background-color: #ff6f61;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 列表项样式 */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+li {
+  background-color: #fff; /* 白色背景 */
+  color: #444;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-5px); /* 悬停时浮起效果 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 表单内标签和输入框 */
+form label {
+  font-size: 1.2rem;
+  color: #ff6f61;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+form input[type="text"], form input[type="radio"] {
+  padding: 10px;
+  border: 1px solid #ff6f61;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(255, 182, 193, 0.3);
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* 删除按钮样式 */
+form button {
+  background-color: #eb4c42; /* 红色按钮 */
+  color: white;
+}
+
+form button:hover {
+  background-color: #ff5c5c; /* 悬停时的浅红色 */
+}
+
+    </style>
+</head>
+<body>
+    <div class="index-body all-apps-body">
+        <div class="all-apps-header">
+    <h1 class="mainheader">Accounting Books </h1>
+    </div>
+    <div class="alink">
+     <a href="/accountingbooks/new">Add New Accounting Book</a><br>
      
-    </ul>
-  </body>
+  
+   <a  href="/accountingbooks/shared-books"> My Shared Books</a><br>
+   <a  href="/accountingbooks/personal-books">My Personal Books</a><br>
+    <a  href="/">Back to Home</a>
+ </div>   
+</div>
+    
+</body>
 </html>

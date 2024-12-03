@@ -1,15 +1,15 @@
-import express from"express";
+import express from "express";
 const router = express.Router();
-import bcrypt from"bcrypt";
-
-import User from"../models/user.js";
+import bcrypt from "bcrypt";
+import seedCategoriesForUser from "../utils/seedCategoriesForUser.js";
+import User from "../models/user.js";
 
 router.get("/sign-up", (req, res) => {
-  res.render("auth/sign-up.ejs",{user:req.seesion});
+  res.render("auth/sign-up.ejs", { user: req.session });
 });
 
 router.get("/sign-in", (req, res) => {
-  res.render("auth/sign-in.ejs",{user:req.session.user||null});
+  res.render("auth/sign-in.ejs", { user: req.session.user || null });
 });
 
 router.get("/sign-out", (req, res) => {
@@ -52,6 +52,7 @@ router.post("/sign-in", async (req, res) => {
     if (!userInDatabase) {
       return res.status(401).send("Login failed. Please try again.");
     }
+    console.log("Seeding categories for user ID:", userInDatabase._id);
 
     // There is a user! Time to test their password with bcrypt
     const validPassword = bcrypt.compareSync(
@@ -61,15 +62,26 @@ router.post("/sign-in", async (req, res) => {
     if (!validPassword) {
       return res.status(401).send("Login failed. Please try again.");
     }
-
+    console.log(userInDatabase);
     // There is a user AND they had the correct password. Time to make a session!
     // Avoid storing the password, even in hashed format, in the session
     // If there is other data you want to save to `req.session.user`, do so here!
     req.session.user = {
       username: userInDatabase.username,
       _id: userInDatabase._id,
-      pantry: userInDatabase.pantry,
     };
+
+    if (!userInDatabase.categoriesSeeded) {
+      await seedCategoriesForUser(userInDatabase._id);
+      userInDatabase.categoriesSeeded = true; // 标记已完成分类种植
+      await userInDatabase.save();
+    }
+    // if (!userInDatabase._id) {
+    //   console.error("User ID is undefined. Cannot seed categories.");
+    // } else {
+    //   await seedCategoriesForUser(userInDatabase._id);
+    // }
+    // 在登录时只调用一次
 
     res.redirect("/");
   } catch (error) {

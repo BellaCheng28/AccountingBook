@@ -1,0 +1,241 @@
+/* public/stylesheets/style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* public/stylesheets/style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fddfd5;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.index-body {
+    background-image: url("https://pic.52112.com/2021/06/25/23/25233302_a2912ae0d8_small.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+}
+
+
+
+.auth-links {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 80px 0 0;
+    height: 100%;
+}
+.signup-link,
+.signin-link {
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 8px 0;
+    border-radius: 25px;
+    width: 10em;
+    text-align: center;
+}
+
+.signup-link {
+    background-color: #f094a5;
+    color: white;
+    margin: 250px 0 20px 0;
+}
+
+.signup-link:hover {
+    background-color: #ff5378;
+}
+
+.signin-link {
+    background-color: #f6e7e7;
+    color: #1c2e5b;
+    margin: 20px 0 0 0;
+}
+
+.signin-link:hover {
+    background-color: #ffffff;
+}
+/* public/stylesheets/style.css */
+.signin-container,
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    color: #1c2e5b;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20em; 
+    height: 60%;
+    background-color: #f6e7e7;
+    padding: 30px 40px 20px 40px;
+    border-radius: 20px;
+    color: #4b598e;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+
+input {
+    border: 1px solid rgb(182, 182, 182);
+    padding: 8px;
+    border-radius: 10px;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.radio-group label {
+    margin-left: 10px;
+    font-size: 1rem;
+    margin-right: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #e8718b;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    margin: 15px 0;
+    font-size: 1.1em;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+button:hover{
+background-color: #ff6f61;
+transform: translateY(-3px);
+}
+
+
+a {
+    text-decoration: none;
+    color: #ff6f61;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+a:hover {
+    color: #ff3b30;
+}
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* public/stylesheets/style.css */
+
+.all-apps-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.all-apps-body li{
+    margin-top: 20px;
+}
+
+.all-apps-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 90%;
+}
+
+
+
+.add-app-link {
+    background-color: #ce4866;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.1em;
+    margin-left:10px ;
+    padding: 1px 25px;
+    text-decoration: none;
+}
+
+
+.add-app-link:hover {
+    background-color: #e84a6c;
+}
+
+/* public/stylesheets/style.css */
+
+ul {
+    list-style: none;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: -20px;
+}
+
+ul>a {
+    text-decoration: none;
+    color: #1c2e5b;
+    width: 50%;
+    background-color: #f6e7e7;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+ul>a:hover {
+    background-color: #4b598e;
+    color: white;
+}

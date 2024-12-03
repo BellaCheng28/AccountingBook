@@ -1,0 +1,70 @@
+
+
+/* 导航栏样式 */
+nav {
+    margin-bottom: 20px;
+}
+
+/* 导航条容器 */
+.navbar {
+    background-color: #ffb3c1;
+    /* 粉色背景 */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+/* 导航栏标题 */
+#nav-header {
+    font-size: 2rem;
+    color: #ff6f61;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(255, 105, 135, 0.5);
+}
+
+.nav-links {
+    margin-top: 10px;
+}
+
+/* 导航链接样式 */
+.authlink {
+    font-size: 1.2rem;
+    color: #ff6f61;
+    text-decoration: none;
+    display: block;
+    margin: 8px 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 链接悬停效果 */
+.authlink:hover {
+    background-color: #ff6f61;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 链接点击效果 */
+.authlink:active {
+    transform: translateY(2px);
+}
+
+/* 响应式设计：小屏幕优化 */
+@media (max-width: 600px) {
+    #nav-header {
+        font-size: 1.8rem;
+        /* 缩小导航栏标题 */
+    }
+
+    .authlink {
+        font-size: 1rem;
+        /* 调整链接字体大小 */
+        padding: 8px 16px;
+        /* 缩小链接的内边距 */
+    }
+}

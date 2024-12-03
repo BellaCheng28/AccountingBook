@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Edit Entry</title>
+  </head>
+  <style>
+    
+  </style>
+  <body>
+    <h1>Edit Entry for Accounting Book <%= accountingBook.name %></h1>
+
+    <form action="/accountingbooks/<%= bookId %>/entries/<%= entry._id %>?_method=PUT" method="POST">
+    <input type="hidden" name="bookId" value="<%= bookId %>" />
+    <input type="hidden" name="_method" value="PUT" />
+      <label for="type">Type:</label>
+      <select name="type" required>
+        <option value="income" <%= entry.type === "income" ? "selected" : "" %>>Income</option>
+        <option value="expense" <%= entry.type === "expense" ? "selected" : "" %>>Expense</option>
+      </select><br>
+      <label for="date">Date:</label>
+      <input
+      type="date"
+      name="date"
+      id="date" required
+      /> <br>
+      <label for="categoryId">Category:</label>
+      <select name="categoryId" required>
+        <% categories.forEach(category => { %>
+          <option value="<%= category._id %>" <%= category._id.toString() === entry.category._id.toString() ? "selected" : "" %>><%= category.name %></option>
+        <% }) %>
+      </select><br>
+
+      <label for="amount">Amount:</label>
+      <input type="number" name="amount" value="<%= entry.amount %>" required /><br>
+      <label for="description">Description:</label>
+      <input type="text" name="description" value="<%= entry.description %>" required /><br>
+
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <a href="/accountingbooks/<%= bookId %>/entries">Back to Entries</a>
+  </body>
+</html>

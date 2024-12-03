@@ -1,2 +1,111 @@
-<h1><%= user.username %>'s Personal Accounting Books</h1>
-<%- include('../partials/_accountingBookList.ejs', { accountingBooks: user.personalBooks }) %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+   <style>
+    
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ff6f61; /* 粉红色 */
+      text-shadow: 2px 2px 5px rgba(255, 105, 135, 0.5);
+      margin-top: 20px;
+    }
+
+    /* 列表样式 */
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px;
+    }
+
+   li.book-item {
+  background-color: #fff; /* 白色背景 */
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* 两边对齐 */
+  align-items: center; /* 垂直居中 */
+  flex-wrap: wrap; /* 当内容过多时换行 */
+}
+
+
+    /* 卡通风格账簿标题 */
+    .book-link {
+      text-decoration: none;
+      color: #ff6f61;
+      font-weight: bold;
+      font-size: 1.5rem; /* 加大字体 */
+      padding: 5px 15px;
+      border: 2px dashed #ff6f61; /* 可爱边框 */
+      border-radius: 10px;
+      background-color: #ffe5e2; /* 浅粉背景 */
+      box-shadow: 0 4px 6px rgba(255, 105, 135, 0.3);
+      text-align: center;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .book-link:hover {
+      background-color: #ffccd1; /* 鼠标悬停时变色 */
+      transform: scale(1.1); /* 鼠标悬停时放大 */
+    }
+
+    /* 编辑和删除按钮样式 */
+    a.edit-link, form button {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #ff6f61;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-left: 10px;
+    }
+
+    a.edit-link:hover, form button:hover {
+      background-color: #ff8b7d;
+      transform: scale(1.05);
+    }
+
+    /* 删除按钮的特殊样式 */
+    form button {
+      background-color: #eb4c42;
+    }
+
+    form button:hover {
+      background-color: #ff5c5c;
+    }
+  </style>
+  </head>
+  <body>
+  
+    <h1><%= user.username %>'s Personal Accounting Books</h1>
+
+    <ul>
+        <% if(personalBooks.length === 0){ %>
+   <li class="book-item"> No personal books found.</li>
+       <% } else {%>
+      <% personalBooks.forEach((book)=>{%>
+      <li class="book-item">
+     <a class="book-link"    href="/accountingbooks/<%=book._id %>/entries"><%=book.name%></a>
+     <a class="edit-link"   href="/accountingbooks/<%= book._id %>/edit">Edit</a>
+     <form  style="width:80px; padding: 0px; " method="POST" action="/accountingbooks/<%= book._id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+      </form>
+      </li>
+      <%})%>
+       <%}%>
+    </ul>
+    <a href="/accountingbooks">Back to AccountingBooks</a>
+  </body>
+</html>

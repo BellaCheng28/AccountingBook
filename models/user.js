@@ -4,16 +4,22 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    minLength: 4,
-    maxLength: 10,
+    // minLength: 4,
+    // maxLength: 10,
     unique: true,
   },
   password: {
     type: String,
     required: true,
-    minLength: 6,
+    // minLength: 6,
   },
-  accountingBooks: [
+  personalBooks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AccountingBook",
+    },
+  ],
+  sharedBooks: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "AccountingBook",
@@ -22,4 +28,4 @@ const UserSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", UserSchema);
-export default User
+export default User;

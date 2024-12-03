@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+     <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <title>Accounting Books</title>
 </head>
-<body>
-    <%- include("./partials/_navbar.ejs",{user:user}) %>
-<h1>welcome to our accountingbook</h1>
-<h2>My Accounting Books</h2>
-   <%- include("./partials/_accountingBookList.ejs",{accountingBooks:user.accountingBooks ||[],user:user}) %>
+<body >
+   <%- include("./partials/_navbar.ejs",{user:user}) %>
+     <div class="auth-links">
+   </div>
 </body>
 </html>

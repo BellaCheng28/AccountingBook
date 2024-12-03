@@ -1,27 +1,34 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const EntrySchema = new mongoose.Schema({
- type:{
-    type:String,
-    enum:['income','expense','budget'],
-     message: '{VALUE} is not a valid type! Allowed values are income, expense',
-    required:true,
- },
-    amount:{
-    type:Number,
-    required:true,
+  type: {
+    type: String,
+    // enum: ["income", "expense", "budget"],
+    required: true,
   },
-   description:{
-    type:String,
-    required:true,
-},
-  
-data:{
-    type:Date,
-    default:Date.now,
-},
+  amount: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,  
+    ref: "Category",  
+    required: true,
 
+    
+  },
 });
+
+
+
 const Entry = mongoose.model("Entry", EntrySchema);
 
 export { EntrySchema }; 

@@ -6,36 +6,26 @@ import User from "../models/user.js";
 router.get("/",async(req,res)=>{
   try{
     const users = await User.find({});
-    res.render("users/index.ejs",{users});
+    res.render("users/index.ejs", {
+      users,
+      currentUser: req.session.user,
+    });
   }catch(error){
     console.log(error);
     res.status(418).redirect("/")
   }
 })
 
-//get a user all accountingbooks
-router.get('/:id',async(req, res) => {   
-try {  
-    const user =await User.findById(req.params.id).populate("accountingBooks");
-    if (!user) {
-        return res.status(404).send("User not found")
-      }
-        res.render("users/show.ejs",{user});  
-} catch (error) {
-    console.error(error);
-    res.status(500).send("There was an error getting users");
-    
-};
-});
-
 
 
 //get personal accounting book
 router.get("/:id/personal-books", async(req,res)=>{
-  try {
+  try { 
      const user = await User.findById(req.params.id).populate("personalBooks");
       if(!user)return res.status(404).send("User not found")
-      res.render("accountingbooks/personal.ejs",{user})
+         const personalBooks = user.personalBooks;
+      res.render("accountingbooks/personal.ejs",{user,personalBooks})
+     console.log(user.personalBooks);
   } catch (error) {
     console.error(error);
     res.status(500).send('Error retrieving personal book')
@@ -46,17 +36,22 @@ router.get("/:id/personal-books", async(req,res)=>{
 //get share accounting books
 
 router.get("/:id/shared-books",async(req,res)=>{
-  try {
+  try { 
  const user = await User.findById(req.params.id).populate("sharedBooks");
   if(!user) return res.status(404).send("User not found")
-    res.render("accountingbooks/shared.ejs",{user});
-    
+    const sharedBooks =user.sharedBooks;
+  console.log("Shared Books for austin:", sharedBooks);
+
+    res.render("accountingbooks/shared.ejs",{user,sharedBooks});
+   
   } catch (error) {
     console.error(error);
     res.status(500).send("Error retrieving shared books");
   }
  
 })
+
+
 
 
 
