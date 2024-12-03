@@ -50,7 +50,7 @@ accouting book routes
 >Note:you may not need all of these routes and views in your application
 
 Entry routes
-| Action | Route                                          | HTTP  Verb |
+| Action | Route                                          | HTTP  Verb                        
 | ------ | ---------------------------------------------- | ---------- |
 | Index  | /accoutingbooks /:bookId/entries               | GET        |
 | New    | /accoutingbooks /:bookId/entries/new           | GET        |
