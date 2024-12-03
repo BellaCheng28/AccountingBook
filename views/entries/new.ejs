@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="/accountingbooks/<%= bookId %>/entries" method="POST">
+  <form style="height: 95%;"  action="/accountingbooks/<%= bookId %>/entries" method="POST">
   <label for="type">Type:</label>
   <select name="type" required>
     <option value="income">Income</option>
@@ -30,10 +30,8 @@
 
   <label for="description">Description:</label>
   <input type="text" name="description" required /><br>
-
-  
-
   <button type="submit">Save Entry</button>
+  <a style="text-align: center;"   href="/accountingbooks/<%= bookId %>/entries">Back to entries</a>
 </form>
 
 </body>

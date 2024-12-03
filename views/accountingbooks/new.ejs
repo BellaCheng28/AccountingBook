@@ -1,133 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>new accounting book</title>
-  <style>
-        /* 通用基础样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <style>
+      /* 通用基础样式 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #f9f4f4; /* 浅粉色背景 */
-            color: #4b598e; /* 深蓝色字体 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background-color: #f9f4f4; /* 浅粉色背景 */
+        color: #4b598e; /* 深蓝色字体 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-        /* 表单容器 */
+      /* 表单容器 */
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 20em;
+        height: 70%;
+        background-color: #f6e7e7; /* 浅粉色背景 */
+        padding: 30px 40px 20px 40px;
+        border-radius: 20px;
+        color: #4b598e;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 每个表单字段的样式 */
+      label {
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      button {
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        border: 2px solid #ff6f61; /* 橙红色边框 */
+        border-radius: 10px;
+        transition: border-color 0.3s ease;
+        width: 100%;
+      }
+
+      input[type="text"]:focus,
+      input[type="number"]:focus,
+      input[type="date"]:focus,
+      select:focus {
+        border-color: #ff6f61;
+        outline: none;
+      }
+
+      /* 单选框容器 */
+      .radio-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      /* 单选框的样式 */
+      input[type="radio"] {
+        margin: 0 5px;
+      }
+
+      /* Yes/No 文本样式 */
+      .radio-group label {
+        margin-left: 10px;
+        font-size: 1rem;
+        margin-right: 20px; /* 控制Yes/No文本之间的间距 */
+      }
+
+      /* 提交按钮 */
+      button {
+        background-color: #ff6f61;
+        color: white;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 12px 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+      }
+
+      /* 按钮悬停效果 */
+      button:hover {
+        background-color: #ff3b30;
+        transform: translateY(-3px);
+      }
+
+      /* 响应式设计：适应手机屏幕 */
+      @media (max-width: 600px) {
         form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            width: 20em;
-            height: 70%;
-            background-color: #f6e7e7; /* 浅粉色背景 */
-            padding: 30px 40px 20px 40px;
-            border-radius: 20px;
-            color: #4b598e;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          width: 90%;
+          height: auto;
+          padding: 20px;
         }
 
-        /* 每个表单字段的样式 */
-        label {
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="date"],
-        select,
         button {
-            padding: 10px;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            border: 2px solid #ff6f61; /* 橙红色边框 */
-            border-radius: 10px;
-            transition: border-color 0.3s ease;
-            width: 100%;
+          width: 100%;
         }
+      }
+      a{
+        text-align: center;
+      }
+      .share-options {
+     display: flex;
+     align-items: center;
+     gap: 10px; /* 控制元素之间的间距 */
+   }
 
-        input[type="text"]:focus,
-        input[type="number"]:focus,
-        input[type="date"]:focus,
-        select:focus {
-            border-color: #ff6f61;
-            outline: none;
-        }
+    .share-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 控制文字与单选框的间距 */
+     }
 
-        /* 单选框容器 */
-        .radio-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        /* 单选框的样式 */
-        input[type="radio"] {
-            margin: 0 5px;
-        }
-
-        /* Yes/No 文本样式 */
-        .radio-group label {
-            margin-left: 10px;
-            font-size: 1rem;
-            margin-right: 20px; /* 控制Yes/No文本之间的间距 */
-        }
-
-        /* 提交按钮 */
-        button {
-            background-color: #ff6f61;
-            color: white;
-            font-size: 1.2rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 12px 20px;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-
-        /* 按钮悬停效果 */
-        button:hover {
-            background-color: #ff3b30;
-            transform: translateY(-3px);
-        }
-
-        /* 响应式设计：适应手机屏幕 */
-        @media (max-width: 600px) {
-            form {
-                width: 90%;
-                height: auto;
-                padding: 20px;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
+   .share-options input[type="radio"] {
+    margin: 0; /* 去掉默认的间距 */
+   }
 
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <form action="/accountingbooks/new" method="POST">
-<label for="name">Accounting Book Name:</label>
-<input type="text" id="name"  name="name" required>
-<label for="share">Share this book:</label>
-<input type="radio"  name="isShared" value="on" >Yes
-<input type="radio"  name="isShared" value="off" checked >No
-<button type="submit">Create Book</button>
-
+      <label for="name">Accounting Book Name:</label>
+      <input type="text" id="name" name="name" required />
+      <div class="share-options">
+      <label for="share">Share this book:</label>
+      <input type="radio" name="isShared" value="on" />Yes
+      <input type="radio" name="isShared" value="off" checked />No
+      </div>
+      <button type="submit">Create Book</button>
+      <a href="/accountingbooks">Back to AccountingBooks</a>
     </form>
-</body>
+    
+  </body>
 </html>

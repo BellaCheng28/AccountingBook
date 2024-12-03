@@ -3,163 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="/stylesheets/style.css" /> -->
-    <!-- <style>
-      /* 页面背景和字体 */
+   <style>
+    /* 全局样式 */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #fce4ec; /* 柔和粉色背景 */
-  color: #4b598e; /* 深蓝色文字 */
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-}
-
-/* 主标题样式 */
-h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #ff6f61;
-  text-shadow: 2px 2px 5px rgba(255, 105, 135, 0.5);
-  margin-top: 30px;
-}
-
-/* 重要的统计数据标题 */
-h3 {
-  color: #ff6f61;
-  font-size: 1.6rem;
-  margin-bottom: 15px;
-}
-
-/* 文字和内容的样式 */
-p {
-  font-size: 1.2rem;
+  background-color: #fddfd5;
+  color: #333;
   line-height: 1.6;
-  margin: 10px 20px;
 }
 
-/* 表单样式 */
+a {
+  color: #ff6f61;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h3 {
+  color: #444;
+}
+
+/* 页面容器 */
+.all-apps-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* 标题区域 */
+.all-apps-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.all-apps-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* 链接区域 */
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.links a {
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.links a:hover {
+  background-color: #ff3b30;
+}
+
+/* 筛选表单 */
 form {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 form label {
-  font-size: 1rem;
-  color: #ff6f61;
+  font-weight: bold;
 }
 
-form select, form input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ff6f61;
-  font-size: 1rem;
+form input[type="date"],
+form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 form button {
-  padding: 10px 20px;
+  padding: 8px 15px;
   background-color: #ff6f61;
+  color: #fff;
   border: none;
-  color: white;
-  border-radius: 10px;
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
 form button:hover {
-  background-color: #ff8b7d;
-  transform: scale(1.05);
+  background-color: #ff3b30;
+}
+
+/* 统计数据 */
+.stats {
+  background-color: #f5f5f5;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.stats h3 {
+  margin: 0;
+  font-weight: bold;
 }
 
 /* 表格样式 */
 table {
   width: 100%;
-  margin-top: 20px;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-table th, table td {
-  padding: 12px 15px;
-  text-align: center;
-  border: 1px solid #f1f1f1;
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
 }
 
 table th {
-  background-color: #ff6f61;
-  color: white;
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
-table td {
-  background-color: #fff;
-}
-
-table tr:hover {
+table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-table button {
-  padding: 6px 12px;
-  background-color: #eb4c42;
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+table td a {
+  color: #007BFF;
+}
+
+table td form button {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: #fff;
   border: none;
-  color: white;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
-table button:hover {
-  background-color: #ff5c5c;
-  transform: scale(1.05);
+table td form button:hover {
+  background-color: #c82333;
 }
 
-/* 显示统计数据 */
-.stats {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.stats h3 {
-  font-size: 1.6rem;
-  color: #ff6f61;
-  margin: 0;
-  padding: 0;
-}
-
-/* 链接样式 */
-a {
-  font-size: 1.2rem;
-  color: #ff6f61;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: #fff;
-  margin-right: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  background-color: #ff6f61;
-  color: white;
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-    </style> -->
+   </style>
     <title>Entries</title>
   </head>
   <body>

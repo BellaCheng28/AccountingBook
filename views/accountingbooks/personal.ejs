@@ -5,25 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Document</title>
-   <style>
-    
+<style>
+  /* Ensure consistent alignment and size */
 
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #ff6f61; /* 粉红色 */
-      text-shadow: 2px 2px 5px rgba(255, 105, 135, 0.5);
-      margin-top: 20px;
-    }
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f6e7e7; /* 柔和粉色背景 */
+  margin: 0;
+  padding: 0;
+  color: #4b598e; /* 深蓝色文字 */
+}
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ff6f61; /* 粉红色 */
+  text-shadow: 2px 2px 5px rgba(255, 105, 135, 0.5);
+  margin-top: 20px;
+}
 
-    /* 列表样式 */
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 20px;
-    }
+/* 列表样式 */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+}
 
-   li.book-item {
+li {
+  background-color: #fff; /* 白色背景 */
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* 账簿名称样式 */
+li a {
+  text-decoration: none;
+  color: #ff6f61;
+  font-size: 1.5rem; /* 加大字体 */
+  font-weight: bold;
+  padding: 5px 15px;
+  border: 2px dashed #ff6f61; /* 可爱风格的边框 */
+  border-radius: 10px;
+  background-color: #ffe5e2; /* 浅粉背景 */
+  box-shadow: 0 4px 6px rgba(255, 105, 135, 0.3);
+  transition: all 0.3s ease;
+}
+
+li a:hover {
+  background-color: #ffccd1; /* 鼠标悬停变色 */
+  transform: scale(1.1); /* 放大效果 */
+}
+
+/* 按钮样式 */
+a.edit-link, a.share-link, form button {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+a.edit-link:hover, a.share-link:hover, form button:hover {
+  background-color: #ff8b7d;
+  transform: scale(1.05);
+}
+
+/* 删除按钮的特殊样式 */
+form button {
+  background-color: #eb4c42;
+}
+
+form button:hover {
+  background-color: #ff5c5c;
+}
+
+/* 返回按钮样式 */
+a.back-link {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.2rem; /* 字体稍大一些 */
+  color: #fff; /* 白色文字 */
+  background-color: #ff6f61; /* 粉红色背景 */
+  padding: 10px 20px; /* 内边距 */
+  border-radius: 20px; /* 圆角按钮 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 按钮阴影 */
+  margin: 20px auto; /* 居中显示 */
+  text-align: center; /* 文本居中 */
+  transition: all 0.3s ease; /* 动效 */
+}
+
+a.back-link:hover {
+  background-color: #ff8b7d; /* 鼠标悬停变色 */
+  transform: scale(1.05); /* 悬停时稍微放大 */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* 增强阴影 */
+}
+/* 账簿项目的样式 */
+li.book-item {
   background-color: #fff; /* 白色背景 */
   padding: 15px;
   margin-bottom: 15px;
@@ -35,57 +124,69 @@
   flex-wrap: wrap; /* 当内容过多时换行 */
 }
 
+/* 账簿名称（fb）的样式 */
+.book-name {
+  font-size: 1.2rem; /* 调整字体大小 */
+  font-weight: bold;
+  color: #ff6f61; /* 粉色文字 */
+  margin-right: 20px; /* 与按钮组的间距 */
+}
 
-    /* 卡通风格账簿标题 */
-    .book-link {
-      text-decoration: none;
-      color: #ff6f61;
-      font-weight: bold;
-      font-size: 1.5rem; /* 加大字体 */
-      padding: 5px 15px;
-      border: 2px dashed #ff6f61; /* 可爱边框 */
-      border-radius: 10px;
-      background-color: #ffe5e2; /* 浅粉背景 */
-      box-shadow: 0 4px 6px rgba(255, 105, 135, 0.3);
-      text-align: center;
-      margin-right: 15px;
-      transition: all 0.3s ease;
-    }
+/* 按钮组样式 */
+.action-buttons {
+  display: flex;
+  gap: 10px; /* 按钮之间的间距 */
+}
 
-    .book-link:hover {
-      background-color: #ffccd1; /* 鼠标悬停时变色 */
-      transform: scale(1.1); /* 鼠标悬停时放大 */
-    }
+/* 通用按钮样式 */
+.action-buttons a, .action-buttons button {
+  font-size: 0.9rem; /* 较小的字体 */
+  text-decoration: none;
+  color: #fff; /* 白色文字 */
+  background-color: #ff6f61; /* 粉色背景 */
+  padding: 8px 12px; /* 内边距 */
+  border-radius: 8px; /* 圆角 */
+  border: none; /* 无边框 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 按钮阴影 */
+  transition: all 0.3s ease; /* 动效 */
+  cursor: pointer;
+}
 
-    /* 编辑和删除按钮样式 */
-    a.edit-link, form button {
-      text-decoration: none;
-      font-size: 1rem;
-      color: #fff;
-      background-color: #ff6f61;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 15px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      margin-left: 10px;
-    }
+.action-buttons a:hover, .action-buttons button:hover {
+  background-color: #ff8b7d; /* 悬停时变色 */
+  transform: scale(1.05); /* 悬停时放大 */
+}
 
-    a.edit-link:hover, form button:hover {
-      background-color: #ff8b7d;
-      transform: scale(1.05);
-    }
+/* 删除按钮特殊样式 */
+.action-buttons button {
+  background-color: #eb4c42;
+}
 
-    /* 删除按钮的特殊样式 */
-    form button {
-      background-color: #eb4c42;
-    }
+.action-buttons button:hover {
+  background-color: #ff5c5c;
+}
 
-    form button:hover {
-      background-color: #ff5c5c;
-    }
-  </style>
+li.book-item {
+ display: flex;
+  justify-content: flex-start; /* 按照左对齐排列 */
+  align-items: center; /* 垂直居中 */
+  gap: 10px; /* 设置子元素间的间距 */
+  flex-wrap: wrap; /* 如果内容太多，可以换行 */
+}
+/* 让 form 和其他按钮保持水平对齐 */
+.book-item form {
+  display: inline-block; /* 改为 inline-block 避免列布局的干扰 */
+  margin: 0; /* 去掉默认 margin */
+  padding: 0; /* 去掉多余的填充 */
+  width: auto; /* 确保宽度由内容决定 */
+  height: auto;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+
+
+</style>
   </head>
   <body>
   
@@ -97,9 +198,9 @@
        <% } else {%>
       <% personalBooks.forEach((book)=>{%>
       <li class="book-item">
-     <a class="book-link"    href="/accountingbooks/<%=book._id %>/entries"><%=book.name%></a>
+     <strong><a class="book-name"    href="/accountingbooks/<%=book._id %>/entries"><%=book.name%></a></strong>
      <a class="edit-link"   href="/accountingbooks/<%= book._id %>/edit">Edit</a>
-     <form  style="width:80px; padding: 0px; " method="POST" action="/accountingbooks/<%= book._id %>?_method=DELETE">
+     <form method="POST" action="/accountingbooks/<%= book._id %>?_method=DELETE">
         <button type="submit">Delete</button>
       </form>
       </li>
