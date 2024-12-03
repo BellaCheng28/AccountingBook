@@ -4,14 +4,14 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    // minLength: 4,
-    // maxLength: 10,
+    minLength: 4,
+    maxLength: 10,
     unique: true,
   },
   password: {
     type: String,
     required: true,
-    // minLength: 6,
+    minLength: 6,
   },
   personalBooks: [
     {
