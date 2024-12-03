@@ -29,35 +29,36 @@ Use the following charts as guides when building your RESTful routes.
 User routes
 | Action | Route          | HTTP  Verb |
 | ------ | -------------- | ---------- |
-| Index  | /users         | GET        |
-| New    | /users/new     | GET        |
-| Create | /users         | POST       |
-| Show   | /users/:userId | GET        |
+| Index  | / users        | GET        |
+| Index  | /users:id/personal-books            | GET        |
+| Index  | /users:id/shared-books              | GET        |
+
 
 
 
 accouting book routes
 | Action | Route                                | HTTP  Verb |
 | ------ | ------------------------------------ | ---------- |
-| Index  | /accoutingbook                       | GET        |
-| New    | /accoutingbook/new                   | GET        |
-| Create | /accoutingbook                       | POST       |
-| Show   | /accoutingbook/:accoutingbookId      | GET        |
-| Edit   | /accoutingbook/:accoutingbookId/edit | GET        |
-| Update | /accoutingbook/:accoutingbookId      | PUT        |
-| Delete | /accoutingbook/:accoutingbookId      | DELETE     |
+| Index  | /accoutingbooks                      | GET        |
+| Index  | /accoutingbooks/personal-books       | GET        |
+| Index  | /accoutingbooks/shared-books         | GET        |
+| New    | /accoutingbooks/new                  | GET        |
+| Create | /accoutingbooks/new                  | POST       |
+| Edit   | /accoutingbooks/:id/edit             | GET        |
+| Update | /accoutingbooks/:id                  | PUT        |
+| Delete | /accoutingbooks/:id                  | DELETE     |
 >Note:you may not need all of these routes and views in your application
 
 Entry routes
-| Action | Route                | HTTP  Verb |
-| ------ | -------------------- | ---------- |
-| Index  | /entry               | GET        |
-| New    | /entry/new           | GET        |
-| Create | /entry               | POST       |
-| Show   | /entry/:entryId      | GET        |
-| Edit   | /entry/:entryId/edit | GET        |
-| Update | /entry/:entryId      | PUT        |
-| Delete | /entry/:entryId      | DELETE     |
+| Action | Route                                          | HTTP  Verb |
+| ------ | ---------------------------------------------- | ---------- |
+| Index  | /accoutingbooks /:bookId/entries               | GET        |
+| New    | /accoutingbooks /:bookId/entries/new           | GET        |
+| Create | /accoutingbooks /:bookId/entries               | POST       |
+| Show   | /accoutingbooks /entry/:entryId                | GET        |
+| Edit   | /accoutingbooks /:bookId/entries/:entryId/edit | GET        |
+| Update | /accoutingbooks /:bookId/entries/:entryId      | PUT        |
+| Delete | /accoutingbooks /:bookId/entries/:entryId/delete| DELETE    |
 
 >Note:you may not need all of these routes and views in your application
 
