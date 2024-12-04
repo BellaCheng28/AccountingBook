@@ -14,7 +14,7 @@ AccountingBooks is a user-friendly web application that allows users to record t
 This project used the following resources:
 - [Unsplash](https://unsplash.com) - High-quality images for the dashboard.
 - [Font Awesome](https://fontawesome.com) - Free icons for web design.
-Special thanks to [OpenAI's ChatGPT](https://openai.com/chatgpt) for providing valuable suggestions and solutions during the development process.
+- Special thanks to [OpenAI's ChatGPT](https://openai.com/chatgpt) for providing valuable suggestions and solutions during the development process.
 
 ## Technologies Used
 * Frontend:
