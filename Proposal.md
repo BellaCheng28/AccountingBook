@@ -1,7 +1,7 @@
 # Project Proposal 
 ## - [x]Accouting book 
 ## Project Description 
-My app is called money bulg, a danamic designed to help persons efficiently track and manage their personal finances.This app will provide a user-friendly interface for user to easily record their income and expenses,view financial summaries,set budgets,and monitor their financial progress over time.by offering visualizations,notificatons,and categorization features, the app aims to improve users' financial awareness and planning.
+My app is called accountingbooks, a danamic designed to help persons efficiently track and manage their personal finances.This app will provide a user-friendly interface for user to easily record their income and expenses,view financial summaries,and monitor their financial progress over time.by offering visualizations,notificatons,and categorization features, the app aims to improve users' financial awareness and planning.
 
   
 
@@ -11,7 +11,7 @@ My app is called money bulg, a danamic designed to help persons efficiently trac
 *   As a User, I want to add my families in my accoutingBook,so that my families can manage accoutingBook.
 *   As a user, I want to add income and expense records easily so that I can track my financial activities.
 *  As a user, I want to view my financial summary so that I can track my spending and savings.
-*  As a user, I want to see simple charts that show where I am spending the most money, so I can make better financial decisions.
+
   
 ### Stretch Goals
 * As a user, I want to set recurring expenses (e.g., rent, subscriptions) so that I don't have to manually enter them each month.
@@ -22,7 +22,7 @@ In this project, I create three primary models:User,Accouting book and Entry.The
 
 ## ERD
 An ERD (Entity-Relationship Diagram) will help you visualize the relationships between these models:
-[ERD](https://lucid.app/lucidchart/b440368b-2cb3-4c59-8285-994850d32c79/edit?viewport_loc=74%2C-19%2C1685%2C748%2C0_0&invitationId=inv_33563eba-3aa7-4d2a-a79c-9a764700ee14)
+![ERD](./public/image/ERD.png)
 
 ## Define RESTful routes for managing data
 Use the following charts as guides when building your RESTful routes.
@@ -64,7 +64,10 @@ Entry routes
 
 ## Wire Frames
 Initial Landing View: 
-[Wire Frames](https://lucid.app/lucidchart/fa227e8d-762f-45f8-8fc9-01f574f9e785/edit?beaconFlowId=4C3622244B97950B&invitationId=inv_a1910e5a-d775-4fab-b40e-644e250e5233&page=0_0#)
+![accountingbook](./public/image/accountingbooks.png)
+![income and expense](./public/image/income%20and%20expense.png)
+![sharebook](./public/image/sharebook.png)
+![entries form](./public/image/entriesform.png)
 
 1. Home Screen: 
   * A dashboard showing date ,total income,total expenses,current balance and budget.
