@@ -65,9 +65,12 @@ Entry routes
 ## Wire Frames
 Initial Landing View: 
 ![accountingbook](./public/image/accountingbooks.png)
-![income and expense](./public/image/income%20and%20expense.png)
 ![sharebook](./public/image/sharebook.png)
+![accessToBook](./public/image/accessToBook.png)
+![personalbook](./public/image/personalbook.png)
+![income and expense](./public/image/income%20and%20expense.png)
 ![entries form](./public/image/entriesform.png)
+![Recurring Transactions](./public/image/Recurring%20Transactions.png)
 
 1. Home Screen: 
   * A dashboard showing date ,total income,total expenses,current balance and budget.
