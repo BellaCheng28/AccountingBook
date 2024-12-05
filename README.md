@@ -8,7 +8,7 @@ AccountingBooks is a user-friendly web application that allows users to record t
 
 ## Getting started 
 [GitHub Repository](https://github.com/BellaCheng28/AccountingBook)
-[HEROKU deployed](https://dashboard.heroku.com/apps/acountingbook/deploy/github)
+[HEROKU deployed](https://acountingbook-4df927594488.herokuapp.com/auth/sign-in)
 
 ## Attributions:
 This project used the following resources:
